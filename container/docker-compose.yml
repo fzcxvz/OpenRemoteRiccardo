@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  manager:
+    image: your-windows-docker-repo/openremote-manager:latest
+    volumes:
+      - C:\path\to\windows\manager\data:/data
+    ports:
+      - "8080:8080"

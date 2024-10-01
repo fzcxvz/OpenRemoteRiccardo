@@ -1,0 +1,8 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
+
+# Install OpenJDK 11 using PowerShell
+RUN powershell -Command \
+    Invoke-WebRequest -Uri "https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip" -OutFile "C:\\openjdk.zip"; \
+    Expand-Archive -Path "C:\\openjdk.zip" -DestinationPath "C:\\"; \
+    Rename-Item -Path "C:\\jdk-11.0.2" -NewName "C:\\openjdk-11"; \
+    Remove-Item -Force "C:\\openjdk.zip"
