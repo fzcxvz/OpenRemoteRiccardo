@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/openjdk-17-runtime
 
-# Add git commit label must be specified at build time using --build-arg GIT_COMMIT=dadadadadad
+# git commit label be specified at build time using --build-arg GIT_COMMIT=dadadadadad
 ARG GIT_COMMIT=unknown
 
 LABEL git-commit=$GIT_COMMIT
@@ -63,7 +63,6 @@ ENV OR_JAVA_OPTS ${OR_JAVA_OPTS:--Xms500m -Xmx2g \
     -Xlog:all=warning:stdout:uptime,level,tags \
     -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/dump.hprof}
 
-# OpenMetrics _created series breaks cloudwatch prometheus scraper
 ENV PROMETHEUS_DISABLE_CREATED_SERIES ${PROMETHEUS_DISABLE_CREATED_SERIES:-true}
 
 RUN mkdir -p /deployment/manager/extensions
