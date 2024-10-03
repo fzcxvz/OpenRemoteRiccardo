@@ -1,13 +1,11 @@
 FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2022
 
-# Copy your custom configuration
+#custom config
 COPY iis-config /inetpub/config
 
-# Set working directory
+#working dir
 WORKDIR /inetpub
 
-# Expose ports for HTTP and HTTPS
 EXPOSE 80 443
-
-# Start IIS service
+#iis service
 CMD ["powershell", "Start-Service", "w3svc"]
